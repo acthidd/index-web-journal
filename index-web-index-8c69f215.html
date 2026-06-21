@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐鱼体育 · 稳定入口与页面说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fafafa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #1c1e21;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ---- 顶部导航 ---- */
+    .top-nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 0 1.2rem 0;
+      border-bottom: 1px solid #e4e6ea;
+      margin-bottom: 3rem;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-size: 0.95rem;
+      font-weight: 450;
+      margin-left: 2rem;
+      transition: color 0.2s;
+    }
+
+    .top-nav a:hover {
+      color: #0077b6;
+    }
+
+    .logo-place {
+      margin-right: auto;
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      color: #1e2a3a;
+      opacity: 0.7;
+    }
+
+    /* ---- hero / 核心介绍 ---- */
+    .hero {
+      margin-bottom: 3.2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      color: #121416;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #3b4045;
+      max-width: 640px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero .inline-link {
+      color: #0077b6;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 119, 182, 0.25);
+    }
+
+    .hero .inline-link:hover {
+      border-bottom-color: #0077b6;
+    }
+
+    /* ---- 三个场景模块（卡片） ---- */
+    .scenes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-bottom: 3.4rem;
+    }
+
+    .scene-card {
+      flex: 1 1 200px;
+      background: white;
+      border-radius: 14px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .scene-card h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: #1e2a3a;
+    }
+
+    .scene-card p {
+      font-size: 0.92rem;
+      color: #4a4f55;
+      line-height: 1.55;
+    }
+
+    /* ---- 常见说明（FAQ 风格） ---- */
+    .faq-section {
+      margin-bottom: 2.8rem;
+    }
+
+    .faq-section h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.4rem;
+      color: #121416;
+      border-left: 4px solid #0077b6;
+      padding-left: 0.8rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid #eaecee;
+      padding-bottom: 1rem;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 480;
+      font-size: 1rem;
+      color: #1e2a3a;
+      margin-bottom: 0.2rem;
+      cursor: default;
+    }
+
+    .faq-answer {
+      font-size: 0.92rem;
+      color: #4a4f55;
+      padding-left: 0.2rem;
+    }
+
+    .faq-answer a {
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: 450;
+    }
+
+    .faq-answer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---- 底部 / 简短页脚 ---- */
+    .footer-note {
+      border-top: 1px solid #e4e6ea;
+      padding-top: 1.6rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #6c727a;
+      text-align: left;
+    }
+
+    .footer-note a {
+      color: #2c3e50;
+      text-decoration: none;
+      border-bottom: 1px dotted #b0b6be;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #2c3e50;
+    }
+
+    /* ---- 响应式 ---- */
+    @media (max-width: 480px) {
+      .page {
+        padding: 1.2rem 1rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .top-nav a {
+        margin-left: 1rem;
+        font-size: 0.85rem;
+      }
+      .logo-place {
+        font-size: 0.9rem;
+      }
+      .scenes {
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width: 640px) {
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+      <span class="logo-place">◈ 导航</span>
+      <a href="#">首页</a>
+      <a href="#">场景</a>
+      <a href="#">说明</a>
+    </nav>
+
+    <!-- hero + 核心介绍（从稳定入口和页面说明角度） -->
+    <div class="hero">
+      <h1>关于稳定入口 &amp; 页面说明</h1>
+      <p>
+        对一个长期使用的服务而言，入口的稳定性与页面信息的清晰度同等重要。 
+        <a href="https://index-web-leyu.com.cn" class="inline-link">乐鱼体育</a> 
+        的网页端始终遵循一贯的访问逻辑：通过固定域名进行访问，同时页面结构保持明确的功能分区。 
+        本文以轻量导航式的布局介绍几个关键场景，并围绕常见疑问进行梳理。
+      </p>
+      <p>
+        无论你从哪个设备打开，页面均以极简留白和窄正文宽度呈现信息，避免冗余元素干扰阅读。 
+        以下三个模块分别对应信息获取、内容存档和日常查阅场景。
+      </p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes">
+      <div class="scene-card">
+        <h3>信息获取</h3>
+        <p>当需要快速了解最新动态时，首页的标题区与导航栏提供第一层指引。结构上减少跳转，让用户能在当前页面完成概览。</p>
+      </div>
+      <div class="scene-card">
+        <h3>内容存档</h3>
+        <p>常见说明与 FAQ 按照主题归并，便于回头查阅。页面内不设置自动刷新或弹窗，保持阅读过程的连续性。</p>
+      </div>
+      <div class="scene-card">
+        <h3>日常查阅</h3>
+        <p>对于频繁使用的访问入口，直接保存顶部链接即可。页面不包含动态脚本或追踪参数，仅提供静态、稳定的介绍内容。</p>
+      </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-section">
+      <h2>常见说明</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Q: 页面的定位是什么？</div>
+        <div class="faq-answer">
+          这是一个介绍性质的静态页面，用于说明 
+          <a href="https://index-web-leyu.com.cn">乐鱼体育</a> 
+          网页端的访问方式、场景划分与常见问题。不涉及任何操作引导或跳转逻辑。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Q: 为什么强调“稳定入口”？</div>
+        <div class="faq-answer">
+          稳定入口意味着域名固定、页面结构长期不变，用户可以通过书签或手动输入直接到达。本页面的所有链接均指向同一域名，不经过中间跳转。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Q: 页面的内容会频繁更新吗？</div>
+        <div class="faq-answer">
+          本页面属于基础介绍型，内容保持相对稳定。若未来有必要补充场景或调整说明，会以相同的极简风格进行更新，并保留历史访问路径。
+        </div>
+      </div>
+    </div>
+
+    <!-- 短脚注（自然嵌入链接） -->
+    <div class="footer-note">
+      <p>
+        本文档是对 
+        <a href="https://index-web-leyu.com.cn">乐鱼体育</a> 
+        网页端入口与页面结构的客观说明。基于知识型语气撰写，所有描述均基于页面实际呈现方式。
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>
