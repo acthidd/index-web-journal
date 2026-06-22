@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九游 · 游戏生活志</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f2f0;
+      font-family: "Noto Sans SC", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+      color: #2e2e2c;
+      line-height: 1.7;
+      padding: 0 1.25rem 3rem;
+    }
+
+    .page {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+
+    /* hero */
+    .hero {
+      margin: 2rem 0 2.5rem;
+      background: linear-gradient(145deg, #e8e7e4 0%, #dad9d4 100%);
+      border-radius: 28px;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      position: relative;
+    }
+
+    .hero-emoji {
+      font-size: 2.8rem;
+      display: inline-block;
+      background: #ffffffb0;
+      padding: 0.2rem 0.8rem 0.2rem 0.9rem;
+      border-radius: 60px;
+      margin-bottom: 1.2rem;
+      border: 1px solid #ffffffb0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      letter-spacing: 2px;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #4f4f4c;
+      max-width: 70%;
+      border-left: 3px solid #a09f98;
+      padding-left: 1rem;
+      background: #f5f5f280;
+      border-radius: 0 8px 8px 0;
+      padding: 0.45rem 1rem;
+      backdrop-filter: blur(1px);
+    }
+
+    /* 背景说明卡片 */
+    .context-card {
+      background: #f9f9f7;
+      border-radius: 20px;
+      padding: 1.8rem 2.2rem;
+      margin: 1.8rem 0 2rem;
+      border: 1px solid #e2e1dd;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .context-card h2 {
+      font-size: 1.25rem;
+      font-weight: 520;
+      display: inline-block;
+      background: #e0dfda;
+      padding: 0.1rem 1rem 0.1rem 1.2rem;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+      color: #3d3d39;
+      margin-bottom: 0.9rem;
+    }
+
+    /* 三段自然介绍 —— 卡片网格 */
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2.2rem 0;
+    }
+
+    .feature-card {
+      flex: 1 1 240px;
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 1.8rem 1.6rem 1.6rem;
+      border: 1px solid #e4e3df;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.02);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      border-color: #d2d1cb;
+    }
+
+    .feature-card .card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .feature-card h3 {
+      font-weight: 530;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.45rem;
+      border-bottom: 2px solid #efeee9;
+      padding-bottom: 0.3rem;
+      display: inline-block;
+    }
+
+    .feature-card p {
+      font-size: 0.96rem;
+      color: #42423e;
+    }
+
+    /* 页尾访问提示 */
+    .footer-prompt {
+      margin-top: 2.8rem;
+      padding: 1.6rem 2rem 1.8rem;
+      background: #f0efeb;
+      border-radius: 60px 60px 20px 20px;
+      border: 1px solid #dad9d3;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-prompt .text {
+      font-size: 0.98rem;
+      color: #3b3b37;
+      max-width: 70%;
+    }
+
+    .footer-prompt .link-badge {
+      background: #ffffff;
+      padding: 0.3rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid #cac9c2;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+      font-weight: 480;
+      font-size: 1rem;
+    }
+
+    .footer-prompt .link-badge a {
+      text-decoration: none;
+      color: #2f2f2b;
+    }
+
+    .footer-prompt .link-badge a:hover {
+      color: #000;
+      text-decoration: underline wavy #99958e 1.5px;
+      text-underline-offset: 6px;
+    }
+
+    /* 附注：FAQ 摘要风格 轻量 */
+    .faq-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 2.2rem 0 0.6rem;
+      background: #f7f6f2;
+      border-radius: 24px;
+      padding: 1.2rem 1.8rem;
+      border: 1px solid #e2e1db;
+      backdrop-filter: blur(2px);
+    }
+
+    .faq-item {
+      flex: 1 1 180px;
+      font-size: 0.92rem;
+      border-left: 2px solid #d6d4cd;
+      padding-left: 0.9rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 530;
+      margin-bottom: 0.15rem;
+      color: #3c3c38;
+    }
+
+    .faq-item span {
+      color: #585854;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #dcdbd4;
+      margin: 1.8rem 0 1.2rem;
+      width: 100%;
+    }
+
+    @media (max-width: 680px) {
+      .hero {
+        padding: 1.8rem 1.5rem;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .hero .sub {
+        max-width: 100%;
+        font-size: 1rem;
+      }
+      .features-grid {
+        flex-direction: column;
+      }
+      .footer-prompt {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        border-radius: 28px;
+      }
+      .footer-prompt .text {
+        max-width: 100%;
+      }
+      .context-card {
+        padding: 1.4rem 1.2rem;
+      }
+      .faq-note {
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-emoji {
+        font-size: 2rem;
+      }
+      .feature-card {
+        padding: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 杂志横幅 -->
+  <header class="hero">
+    <div class="hero-emoji">🎮 ︎ ︎ 专题</div>
+    <h1>游戏生活 · 入口</h1>
+    <div class="sub">从社区到资讯，重新理解移动游戏的联结方式</div>
+  </header>
+
+  <!-- 背景说明 -->
+  <section class="context-card">
+    <h2>📌 为什么是九游</h2>
+    <p style="margin-top:0.3rem;">
+      国内手游生态日趋细分，玩家需要的不仅是下载渠道，更是有温度的同好圈子与实时资讯。<strong>九游</strong>在多年迭代中逐渐聚合了游戏库、测评专栏、攻略共创和玩家动态，成为一个以兴趣为轴心的游戏生活节点。其背后是数千万活跃用户对“即点即玩、即看即评”的日常依赖——从新游预约到老游复盘，一条信息流承载了多种需求。
+    </p>
+    <p style="margin-top: 0.75rem; color: #4b4b47;">
+      本次专题从平台的内容厚度切入，不堆叠术语，只观察它如何成为许多玩家手机里的默认图标。
+    </p>
+  </section>
+
+  <!-- 三段自然介绍 + 特点场景 -->
+  <div class="features-grid">
+    <article class="feature-card">
+      <div class="card-icon">📋</div>
+      <h3>资讯 · 多源筛选</h3>
+      <p>官方公告、玩家评测、媒体专栏混排成个性化信息流。不再需要在多个应用间跳转，<a href="https://m-cn-9game.com" style="color:#3b3b37;text-decoration:underline;text-decoration-color:#b5b3ab;text-underline-offset:4px;font-weight:480;">九游</a>内的话题标签与编辑推荐帮你在海量更新中定位真正值得尝试的作品，减少决策疲劳。</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="card-icon">💬</div>
+      <h3>社区 · 轻量互动</h3>
+      <p>论坛式结构被重组为更轻的“动态流+即时回复”。晒战绩、求阵容、吐槽关卡，每条内容都能快速获得同好回应。没有复杂等级体系，发言门槛低，适合碎片化交流。对于长线运营的游戏，这里的攻略沉淀尤其有用。</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="card-icon">📦</div>
+      <h3>场景 · 即点即用</h3>
+      <p>从预约提醒、礼包兑换到云游戏试玩，多场景入口被整合进一个面板。不需要反复登录不同平台，账号体系打通后，收藏、评价、好友动态都同步。对于同时玩多款游戏的玩家，这种聚合能节省不少操作成本。</p>
+    </article>
+  </div>
+
+  <!-- FAQ摘要 + 附加背景 -->
+  <div class="faq-note">
+    <div class="faq-item">
+      <strong>❓ 内容来源</strong>
+      <span>编辑精选 + 玩家UGC，部分专业评测来自合作作者</span>
+    </div>
+    <div class="faq-item">
+      <strong>🧩 平台侧重</strong>
+      <span>Android/iOS 双端，以国内手游为主，小部分独立游戏与页游适配</span>
+    </div>
+    <div class="faq-item">
+      <strong>📊 活跃板块</strong>
+      <span>新游预约榜、热门攻略、游戏圈、开服表、福利中心</span>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 页尾访问提示 自然嵌入链接 -->
+  <div class="footer-prompt">
+    <div class="text">
+      <span style="font-weight:480;">📌</span> 如果你对上述任何场景产生好奇，或想了解当前哪些手游正在被讨论，
+      直接前往 <a href="https://m-cn-9game.com" style="color:#2f2f2b;text-decoration:underline;text-decoration-color:#b0aea6;text-underline-offset:5px;font-weight:500;">九游</a> 看看当日的热门动态与编辑推荐即可。不用注册也能浏览大部分内容。
+    </div>
+    <div class="link-badge">
+      <a href="https://m-cn-9game.com">九游</a> <span style="opacity:0.6;margin-left:0.2rem;">↗</span>
+    </div>
+  </div>
+
+  <!-- 极简脚注 -->
+  <footer style="margin-top: 2.5rem; font-size:0.8rem; color:#8c8b86; text-align:center; border-top:1px solid #e0dfd9; padding-top:1.2rem;">
+    杂志专题式索引 · 内容基于公开信息整理
+  </footer>
+</div>
+</body>
+</html>
